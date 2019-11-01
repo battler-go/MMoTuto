@@ -374,7 +374,7 @@ var config = {
   type: Phaser.AUTO,
   parent: 'content',
   width: 320,
-  height: 240,
+  height: 218,
   zoom: 3,
   pixelArt: true,
   physics: {

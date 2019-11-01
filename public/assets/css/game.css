@@ -72,7 +72,7 @@ html, body {
 
 .chatArea {
   max-height: 660px;
-  height: 660px;
+  height: 590px;
   overflow-y: scroll;
 }
 
