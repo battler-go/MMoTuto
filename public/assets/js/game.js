@@ -218,7 +218,6 @@ class WorldScene extends Phaser.Scene {
     
     this.container.add(this.weapon);
     this.attacking = false;
-
     // update camera
     this.updateCamera();
    
@@ -322,12 +321,17 @@ class WorldScene extends Phaser.Scene {
   update() {
     if (this.container) {
       this.container.body.setVelocity(0);
-   
       // Horizontal movement
       if (this.cursors.left.isDown) {
-        this.container.body.setVelocityX(-80);
+        this.container.body.setVelocityX(-80);        
       } else if (this.cursors.right.isDown) {
         this.container.body.setVelocityX(80);
+      }
+      
+      if (this.cursors.left.isDown) {
+        this.weapon.setPosition(-10,0,0);
+      } else if(this.cursors.right.isDown) {
+        this.weapon.setPosition(10,0,0);
       }
    
       // Vertical movement
@@ -335,6 +339,16 @@ class WorldScene extends Phaser.Scene {
         this.container.body.setVelocityY(-80);
       } else if (this.cursors.down.isDown) {
         this.container.body.setVelocityY(80);
+      }
+
+      if (this.cursors.up.isDown) {
+        this.weapon.setPosition(0,-10,0);
+      } else if (this.cursors.down.isDown) {
+        this.weapon.setPosition(0,10,0);        
+      }
+
+      if (Phaser.Input.Keyboard.JustDown(this.cursors.space) && !this.attacking && document.activeElement !== inputMessage) {
+        this.attacking = true;
       }
    
       // Update the animation last and give left/right animations precedence over up/down animations
@@ -353,7 +367,6 @@ class WorldScene extends Phaser.Scene {
       }
       
       // emit player movement
-      console.log(this.container);
       var x = this.container.x;
       var y = this.container.y;
       var flipX = this.player.flipX;
