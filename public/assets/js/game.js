@@ -217,7 +217,7 @@ class WorldScene extends Phaser.Scene {
     this.physics.world.enable(this.weapon);
     
     this.container.add(this.weapon);
-    this.attacking = true;
+    this.attacking = false;
 
     // update camera
     this.updateCamera();
